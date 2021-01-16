@@ -1,0 +1,10 @@
+.item{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	margin: 5px;
+}
+.item__image{
+	width: 80%;
+	object-fit: contain;
+}
