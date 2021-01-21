@@ -1,5 +1,11 @@
 import "./Item.css";
+import {useDispatch, useSelector} from "react-redux";
+import {actionTypes, getItemCount} from "../reducers/cartReducer";
 const Item = ({item}) => {
+
+	const dispatch = useDispatch();
+	const cartItems = useSelector(state=>state);
+	const itemCount = getItemCount(cartItems, item);
 	return(
 		<div className="item">
 			<div className="item__top">
@@ -15,9 +21,15 @@ const Item = ({item}) => {
 			</div>
 			<div className="item__bottom">
 				<div className="item__bottomOptions">
-					<button className="item__bottomButton">-</button>
-					<input type="text" value="0"/>
-					<button className="item__bottomButton">+</button>
+					<button disabled={!itemCount} className="item__bottomButton" onClick={()=>dispatch({
+						type: actionTypes.REMOVE_FROM_CART,
+						payload: item,
+					})}>-</button>
+					<input type="text" value={itemCount} />
+					<button className="item__bottomButton" onClick={() => dispatch({
+						type : actionTypes.ADD_TO_CART,
+						payload: item,
+					})}>+</button>
 				</div>	
 				<p className="item__bottomPrice">$ {item.price}</p>
 			</div>

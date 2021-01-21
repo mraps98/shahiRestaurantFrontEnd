@@ -1,5 +1,6 @@
 import './App.css';
 import Home from "./screens/Home";
+import Cart from "./screens/Cart";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -11,7 +12,7 @@ function App() {
 	  		<Route path="/cart">
 	  			<Navbar />
 	  			<div className="container">
-	  				<p>Cart</p>
+	  				<Cart />	
 	  			</div>
 	  			<Footer />
 	  		</Route>
